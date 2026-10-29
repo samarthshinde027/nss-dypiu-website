@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NSS DYPIU | Admin Demo</title><link rel="stylesheet" href="styles.css">
+  <style>
+    .admin-page{background:#f7f6f4;min-height:100vh}.admin-head{background:#fff;border-bottom:1px solid var(--line);padding:20px 0}.admin-head .container{display:flex;justify-content:space-between;align-items:center;gap:20px}.admin-content{padding:48px 0}.admin-title{font-family:var(--display);font-size:38px;letter-spacing:-.05em;margin:0 0 8px}.admin-warning{padding:15px 17px;background:#fff5e3;border:1px solid #edd9ac;color:#785522;font-size:12px;margin:25px 0}.admin-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:25px 0}.kpi{padding:20px;background:#fff;border:1px solid var(--line)}.kpi span{display:block;font-size:10px;color:var(--muted)}.kpi strong{display:block;font-family:var(--display);font-size:27px;color:var(--maroon)}.admin-columns{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}.admin-card{background:#fff;border:1px solid var(--line);padding:22px;min-width:0}.admin-card h2{font-family:var(--display);font-size:17px}.admin-table{width:100%;border-collapse:collapse;font-size:11px}.admin-table th,.admin-table td{text-align:left;padding:12px 8px;border-bottom:1px solid var(--line)}.admin-table th{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.admin-form .field{margin-bottom:13px}.admin-form .button{width:100%}.demo-list{padding-left:18px;font-size:12px;color:var(--muted);line-height:2}.admin-back{font-size:12px;color:var(--maroon);font-weight:700}@media(max-width:760px){.admin-kpis{grid-template-columns:repeat(2,1fr)}.admin-columns{grid-template-columns:1fr}.admin-content{padding:30px 0}.admin-title{font-size:31px}.admin-head .container{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body class="admin-page">
+  <header class="admin-head"><div class="container"><a class="brand" href="index.html"><span class="brand-mark">NSS</span><span><strong>NSS DYPIU</strong><small>Coordinator workspace · prototype</small></span></a><a class="admin-back" href="index.html">← Back to website</a></div></header>
+  <main class="container admin-content">
+    <p class="eyebrow">COORDINATOR WORKSPACE / PREVIEW</p>
+    <h1 class="admin-title">Activity management dashboard</h1>
+    <p class="section-intro">A visual preview of the tools planned for authorized NSS coordinators.</p>
+    <div class="admin-warning"><strong>Demo mode — no login or secure database is connected.</strong> The figures and records below are examples only. Do not use this page to store or manage real student data. A production admin panel requires authentication, permissions, secure server-side validation and audit logs.</div>
+    <div class="admin-kpis">
+      <div class="kpi"><span>Registered volunteers</span><strong>—</strong></div><div class="kpi"><span>Events this term</span><strong>—</strong></div><div class="kpi"><span>Service hours</span><strong>—</strong></div><div class="kpi"><span>Certificates issued</span><strong>—</strong></div>
+    </div>
+    <div class="admin-columns">
+      <section class="admin-card"><h2>Sample activity register</h2><p class="small-label">Replace with live records from the approved database.</p><div style="overflow-x:auto"><table class="admin-table"><thead><tr><th>Activity</th><th>Date</th><th>Status</th></tr></thead><tbody><tr><td>Community Cleanliness Drive</td><td>14 Nov 2026</td><td>Placeholder</td></tr><tr><td>Tree Plantation</td><td>22 Nov 2026</td><td>Placeholder</td></tr><tr><td>Digital Literacy Awareness</td><td>10 Oct 2026</td><td>Placeholder</td></tr></tbody></table></div></section>
+      <section class="admin-card"><h2>Planned coordinator tools</h2><ul class="demo-list"><li>Create and publish events</li><li>Record attendance and service hours</li><li>Manage volunteer profiles and interests</li><li>Generate certificate reference numbers</li><li>Export approved reports to CSV</li><li>Manage roles and change history</li></ul></section>
+    </div>
+    <div class="admin-columns" style="margin-top:18px">
+      <section class="admin-card"><h2>Service-hour entry — UI preview</h2><form class="admin-form" id="hoursForm"><div class="field"><label for="volunteer">Volunteer ID</label><input id="volunteer" required placeholder="e.g. DYPIU-0001"></div><div class="field"><label for="activity">Activity</label><input id="activity" required placeholder="Activity name"></div><div class="field"><label for="hours">Hours completed</label><input id="hours" type="number" min="0.5" max="24" step="0.5" required placeholder="e.g. 3"></div><button class="button button-primary" type="submit">Preview entry</button><div class="form-message" id="hoursMessage" aria-live="polite"></div></form></section>
+      <section class="admin-card"><h2>Production checklist</h2><ul class="demo-list"><li>Confirm university approval and domain</li><li>Use secure coordinator sign-in</li><li>Restrict access by role</li><li>Store data in a secure backend</li><li>Publish privacy and retention policy</li><li>Verify certificate data before issuance</li></ul></section>
+    </div>
+  </main>
+  <script>
+    document.getElementById('hoursForm').addEventListener('submit',e=>{e.preventDefault();const h=Number(document.getElementById('hours').value);const m=document.getElementById('hoursMessage');m.className='form-message success';m.textContent=`Preview only: ${h} hour(s) for ${document.getElementById('volunteer').value} on ${document.getElementById('activity').value}. This was not saved.`;});
+  </script>
+</body>
+</html>
